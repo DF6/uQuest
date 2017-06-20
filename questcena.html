@@ -1,0 +1,89 @@
+<div ng-controller="uquestCtrl as uq">
+  <div class="row">
+    <div class="col s6 offset-s3">
+      <h1>Quest-cena</h1>
+      Tendr&aacute;s una encuesta en lo que tardas en tirarte un Quest-co.<br/>
+      <h5>1. Elige fecha y hora</h5>
+      La gente no se pone de acuerdo ni para la hora. Elige el rango de fechas y horas en las que hacer la cena y ¡a pelear!<br/><br/>
+      <div class="input-field">
+        <input type="text" id="d1" class="datepicker col s8" onclick="$('.datepicker').pickadate({
+         selectMonths: true,
+         monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+         monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+         weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+         weekdaysShort: ['Dom', 'Lun','Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+         today: 'Mañana',
+         clear: '',
+         close: 'Cerrar',
+         format: 'dd/mm/yyyy',
+         firstDay:1,
+         min: 1,
+         max:90
+       });">
+       <label for="d1">Fecha de inicio</label>
+     </div>
+     <br/><br/>
+     <div class="input-field">
+       <input type="text" id="d2" class="datepicker col s8" onclick="$('.datepicker').pickadate({
+          selectMonths: true,
+          monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+          monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+          weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+          weekdaysShort: ['Dom', 'Lun','Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+          today: 'Mañana',
+          clear: '',
+          close: 'Cerrar',
+          format: 'dd/mm/yyyy',
+          firstDay:1,
+          min: 1,
+          max:90
+        });">
+        <label for="d2">Fecha de fin</label>
+      </div>
+      <br/><br/><br/>
+      <h5>2. Elige los posibles sitios</h5>
+      ¿A qu&eacute; sitio ir? Puedes elegir varias opciones predefinidas o, por el contrario, a&ntilde;adir opciones m&aacute;s espec&iacute;ficas.<br/><br/>
+      <div id="ch"><input type="checkbox" ng-model="uq.opc[0]" id="test1"/>
+      <label for="test1">McDonalds</label><br/>
+      <input type="checkbox" ng-model="uq.opc[1]" id="test2"/>
+      <label for="test2">Burguer King</label><br/>
+      <input type="checkbox" ng-model="uq.opc[2]" id="test3"/>
+      <label for="test3">Telepizza</label><br/>
+      <input type="checkbox" ng-model="uq.opc[3]" id="test4"/>
+      <label for="test4">Domino's Pizza</label><br/>
+      <input type="checkbox" ng-model="uq.opc[4]" id="test5"/>
+      <label for="test5">Restaurante chino</label><br/>
+      <input type="checkbox" ng-model="uq.opc[5]" id="test6"/>
+      <label for="test6">Kebab</label><br/>
+      <input type="checkbox" ng-model="uq.opc[6]" id="test7"/>
+      <label for="test7">Restaurante italiano</label><br/>
+      <input type="checkbox" ng-model="uq.opc[7]" id="test8"/>
+      <label for="test8">Kentucky Fried Chicken</label><br/>
+      <input type="checkbox" ng-model="uq.opc[8]" id="test9"/>
+      <label for="test9">Pans & Company</label><br/></div><br/><br/>
+      <div class="row">O a&ntilde;adir otro...</div>
+      <div class="row"><div class="input-field col s8">
+        <input id="p" type="text" class="validate">
+        <label for="p">Otro...</label>
+        <a class="waves-effect waves-light btn white pregunta" ng-click="uq.opc[uq.opc.length]=true" onclick="
+        var ch=document.createElement('input');
+        ch.setAttribute('type','checkbox');
+        ch.setAttribute('checked','checked');
+        ch.setAttribute('ng-model','uq.opc['+document.getElementById('ch').getElementsByTagName('input').length+']')
+        ch.setAttribute('id','test'+(document.getElementById('ch').getElementsByTagName('input').length+1));
+        var ch2=document.createElement('label');
+        ch2.setAttribute('for','test'+(document.getElementById('ch').getElementsByTagName('input').length+1));
+        ch2.innerHTML=document.getElementById('p').value;
+        var ch3=document.createElement('br');
+        document.getElementById('ch').appendChild(ch);
+        document.getElementById('ch').appendChild(ch2);
+        document.getElementById('ch').appendChild(ch3);
+        document.getElementById('p').value='';">A&ntilde;adir</a>
+      </div>
+      </div>
+      <h5>3. Elige a tus invitados</h5>
+      Los invitados a los que hayas enviado la encuesta ir&aacute;n apareciendo en tu apartado de administraci&oacute;n seg&uacute;n vayan respondiendo, tanto positiva como negativamente.
+      <br/><br/><a class="waves-effect waves-light btn white pregunta" ng-click="uq.guardarFechaCena(1);uq.guardarFechaCena(2);uq.guardarPregunta('Cena')">Finalizar Pregunta >></a>
+    </div>
+  </div>
+</div>

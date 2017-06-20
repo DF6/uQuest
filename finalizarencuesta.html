@@ -1,0 +1,43 @@
+<div class="container animated fadeIn" ng-controller="uquestCtrl as uq">
+  <div class="row">
+    <div class="col m10 offset-m1 s12">
+      <h1>Ultimas comprobaciones</h1>
+      Ya casi est&aacute;, revisa los datos de tu encuesta y presiona finalizar para poder compartirla
+      <br/><br/>
+      <div class="card-panel blue">
+        <span class="white-text">
+          Pass - {{uq.pass}}
+        </span>
+      </div>
+      <div class="card-panel blue">
+        <span class="white-text">
+          Fecha - {{uq.fecha}}
+        </span>
+      </div>
+      <ul class="collection">
+        <li ng-repeat="pre in uq.preguntas" class="collection-item avatar">
+          <i style="margin:1% 0% 0% 1%" class="material-icons circle blue valign">comment</i>
+          <!--Los cambios que hice aquí fueron para que no haya problemas con el código anterior. Por ejemplo en vez de uq.preguntas.[$index][1] cambia a pre.tipoPregunta-->
+          <div style="margin-left:2%;"><span class="title">{{pre.pregunta}}</span>
+          <br/>Tipo: {{pre.tipoPregunta}}<br/>
+          <p ng-if="pre.tipoPregunta=='Lista'"><p ng-repeat="opc in pre.opciones" style="font-size:100%;">{{opc}}</p></p>
+          <p ng-if="pre.tipoPregunta=='Fecha'" style="font-size:100%;">{{pre.fecha}}</p>
+          <p ng-if="pre.tipoPregunta=='Cena'" style="font-size:100%;">Entre {{pre.fecha1}} y {{pre.fecha2}}, en <a href="" onclick="
+            for(i=0;i<document.getElementsByClassName('res').length;i++)
+            {
+              if(document.getElementsByClassName('res')[i].style.display=='none'){document.getElementsByClassName('res')[i].style.display='block';}
+              else{document.getElementsByClassName('res')[i].style.display='none';}
+            }">{{pre.opctru.length}} posibles sitios</a></p>
+          <p ng-if="pre.tipoPregunta=='Cena'"><p class="res" style="display:none;font-size:100%;" ng-repeat="res in pre.opctru">{{res}}</p></p>
+          <p ng-if="pre.tipoPregunta=='Foto'"><img ng-src="{{pre.foto}}"/></p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row center">
+    <a class="waves-effect waves-light btn white grey-text text-darken-2" ng-show="!uq.consultaSwitch()" href="#/admincreacion"><< Volver atr&aacute;s</a>
+    <a class="waves-effect waves-light btn white grey-text text-darken-2" href="#/" ng-click="uq.borraTodo()"><< Borrar<span class="hide-on-small-only"> todo</span></a>
+    <a class="waves-effect waves-light btn white grey-text text-darken-2" ng-click="uq.enviarEncuesta()">Finalizar<span class="hide-on-small-only"> Quest</span> >></a>
+  </div>
+</div>

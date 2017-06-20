@@ -1,0 +1,49 @@
+<div class="container animated fadeIn" ng-controller="uquestRespuestasCtrl as uq">
+  <div class="row" ng-init="uq.checkIdEncuesta()">
+    <div class="col m10 offset-m1 s12">
+      <h1>Respuestas<span class="right"><small><a href="#/votar/{{uq.idEncuesta}}">Votar</a></small></span></h1>
+      <ul class="collection">
+        <li class="collection-item">Id de la encuesta<span class="badge">{{uq.idEncuesta}}</span></lo>
+        <li class="collection-item">Fecha final<span class="badge">{{uq.fechaFin}}</span></li>
+      </ul>
+    </div>
+    <div class="col m10 offset-m1 s12">      
+      <div ng-if="!uq.preguntas">
+        <h2>Cargando las respuestas.</h2>
+        <div class="progress">
+          <div class="indeterminate"></div>
+        </div>
+      </div>
+      <div ng-if="uq.preguntas">        
+          <div class="row">      
+            <div ng-repeat="(preK, pre) in uq.preguntas">
+              <div class="col s12">              
+                <div ng-if="pre.tipoPregunta=='Breve'" class="pregunta">
+                  <ul class="collection with-header">
+                    <li class="collection-header"><h5>{{preK + 1}}. {{pre.pregunta}}</h5></li>
+                    <li class="collection-item"  ng-show="!pre.respuestas.length">{{opc.opcion}}
+                      Aún no hay respuestas para esta pregunta
+                    </li>
+                    <li class="collection-item"  ng-show="pre.respuestas.length" ng-repeat="(respK, respuesta) in pre.respuestas">{{ respuesta.respuesta }}
+                      <span class="right hide-on-small-only"><b>{{ respuesta.nombreUsuario }}</b></span>
+                    </li>
+                  </ul>
+                </div>
+                <div ng-if="pre.tipoPregunta=='Lista'" class="pregunta">
+                  <ul class="collection with-header">
+                    <li class="collection-header"><h5>{{preK + 1}}. {{pre.pregunta}}</h5></li>
+                    <li class="collection-item"  ng-show="!pre.respuestas.length">{{opc.opcion}}
+                      Aún no hay respuestas para esta pregunta
+                    </li>
+                    <li class="collection-item"  ng-show="pre.respuestas.length" ng-repeat="(opcK, opc) in pre.opciones">{{opc.opcion}}
+                      <span class="badge"><b>{{(pre.respuestas | filter:opc.opcion:true).length}}</b></span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

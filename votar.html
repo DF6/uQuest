@@ -1,0 +1,102 @@
+<div class="container animated fadeIn" ng-controller="uquestVotarCtrl as uq">
+  <div class="row" ng-init="uq.checkIdEncuesta()">
+    <div class="col m10 offset-m1 s12">
+      <h1>Votaciones<span class="right"><small><a href="#/respuestas/{{uq.idEncuesta}}">Ver respuestas</a></small></span></h1>
+    </div>
+    <div class="col m10 offset-m1 s12">      
+      <ul class="collection">        
+        <li class="collection-item">Id de la encuesta<span class="badge">{{uq.idEncuesta}}</span></li>
+        <li class="collection-item">Fecha final<span class="badge">{{uq.fechaFin}}</span></li>
+        <li class="collection-item white-text red lighten-1 center" ng-if="uq.blockedForm && uq.respondida">Ya has enviado tu respuesta a esta encuesta.</li>
+      </ul>
+    </div>
+    <div class="col m10 offset-m1 s12">      
+      <div ng-if="!uq.preguntas">
+        <h2>Cargando las preguntas.</h2>
+        <div class="progress">
+          <div class="indeterminate"></div>
+        </div>
+      </div>
+      <div ng-if="uq.preguntas">
+        <form name="votacionForm" ng-submit="uq.submitForm()" novalidate>
+          <div class="row">      
+            <div ng-repeat="(preK, pre) in uq.preguntas">
+              <div class="col s12">
+                <div ng-if="pre.tipoPregunta=='Breve'" class="pregunta">
+                  <div class="input-field">
+                    <input id="pre{{preK}}-id" type="text" name="pre{{preK}}" ng-model="uq.preguntas[preK].respuestasNew[0].respuesta" ng-disabled="uq.blockedForm || pre.bloqueada" required ng-minlength="4" ng-class="{ 'validate': votacionForm.pre{{preK}}.$valid, 'invalid' : (votacionForm.pre{{preK}}.$invalid || votacionForm.pre{{preK}}.$error.minlength) && !votacionForm.pre{{preK}}.$pristine }">
+                    <label for="pre{{preK}}-id" class="active">{{preK + 1}}. {{pre.pregunta | limitTo:60 }}</label>
+                  </div>  
+                </div>
+                <div ng-if="pre.tipoPregunta=='Lista'" class="pregunta">
+                  <label class="preguntaLista especial">{{preK + 1}}. {{pre.pregunta | limitTo:60 }}</label>
+                  <ul class="collection noborders">
+                    <li class="collection-item transparent" ng-repeat="(opcK, opc) in pre.opciones">                      
+                      <input  class="with-gap" type="radio" name="pre{{preK}}" id="pre{{preK}}-opc{{opcK}}" ng-disabled="uq.blockedForm" ng-model="uq.preguntas[preK].respuestasNew[0]" ng-value="opc.formValue"/>
+                      <label for="pre{{preK}}-opc{{opcK}}">{{opc.opcion}}</label>                      
+                    </li>
+                  </ul>         
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col m8 s12">              
+              <div class="input-field">
+                <input name="encuestado" class="validate" ng-disabled="uq.blockedForm" ng-model="uq.nombreUsuario" min-lenght="4" type="text" id="encuestado-id"/>
+                <label for="encuestado-id">Nombre del encuestado</label>
+              </div>
+            </div>
+            <div class="col m4 s12">
+              <input id="enviarRespuestas" class="btn waves-effect waves-light right" ng-class="{ 'disabled': votacionForm.$invalid }" ng-disabled="votacionForm.$invalid" type="submit" value="Enviar respuestas">
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- **Revisar terminar de adaptar los demás tipos de pregunta
+      <div ng-if="uq.preguntas.length != 0" ng-repeat="pre in uq.preguntas">
+        <h5>{{$index + 1}}. {{pre.pregunta}}</h5>
+        <p style="font-size:100%">Tipo: {{pre.tipoPregunta}}</p>
+        <div ng-if="pre.tipoPregunta=='Lista'" ng-repeat="opc in pre.opciones">
+          <input name="group1" type="radio" id="test{{$index}}" />
+          <label for="test{{$index}}">{{opc}}</label>
+        </div>
+        <div class="input-field" ng-if="pre.tipoPregunta=='Breve'">
+          <input id="br" type="text" class="validate"/>
+          <label for="br">Respuesta</label>
+        </div>
+        <div ng-if="pre.tipoPregunta=='Cena'">
+          <input type="text" id="d1" class="datepicker col s8" onclick="$('.datepicker').pickadate({
+           selectMonths: true,
+           monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+           monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+           weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+           weekdaysShort: ['Dom', 'Lun','Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+           today: 'Mañana',
+           clear: '',
+           close: 'Cerrar',
+           format: 'dd/mm/yyyy',
+           firstDay:1,
+           min: 1,
+           max:90
+         });">
+         <label for="d1">Fecha de inicio</label>
+         <div ng-repeat="res in pre[4]">
+           <input name="group1" type="radio" id="test1" />
+           <label for="test{{$index}}">{{opc}}</label>
+         </div>
+        </div>
+        <div ng-if="pre.tipoPregunta=='Foto'">
+          <img src="pre[2]"/>
+          <div class="input-field"  >
+            <input id="br" type="text" class="validate"/>
+            <label for="br">Respuesta</label>
+          </div>
+        </div>
+        <div ng-if="pre.tipoPregunta=='Fecha'">
+
+        </div>
+      </div>-->
+    </div>
+  </div>
+</div>

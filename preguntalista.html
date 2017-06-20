@@ -1,0 +1,28 @@
+<div class="container animated fadeIn" ng-controller="uquestCtrl as uq">
+  <div class="row">
+    <div class="col m10 offset-m1 s12">
+      <h1>Pregunta {{uq.preguntas.length+1}}</h1>
+      <div class="input-field">
+        <input id="pregunta" type="text" class="validate" ng-model="uq.pregunta"/>
+        <label for="pregunta">Pregunta</label>
+      </div>
+      <!--<input type="checkbox" id="check"/><label for="check">Elegir varias opciones</label><br/><br/>-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col m10 offset-m1 s12">
+      <ul class="collection with-header">
+        <li class="collection-header"><h4>Opciones</h4></li>
+        <li class="collection-item" ng-repeat="opciones in uq.opci()">
+          <div>{{opciones}}<a href="" ng-click="uq.borraOpcion($index)" class="secondary-content"><i class="material-icons big">highlight_off</i></a></div>
+        </li>
+        <li class="collection-item right-align"><a href="#/opcion" ng-click="uq.revisaOpciones()"><i class="material-icons waves-effect waves-light white teal-text text-lighten-1 nomargin" >queue</i></a></li>        
+      </ul>      
+    </div>
+  </div>
+  <div class="row center">
+    <a class="waves-effect waves-light btn white grey-text text-darken-2" ng-show="uq.consultaSwitch()" href="#/admincreacion"><< Volver</a>
+    <a class="waves-effect waves-light btn white grey-text text-darken-2" ng-show="!uq.consultaSwitch()" href="#/crear"><< Cancelar<span class="hide-on-small-only"> pregunta</span></a>
+    <a class="waves-effect waves-light btn white grey-text text-darken-2" ng-click="uq.guardarPregunta('Lista')">Guardar <span class="hide-on-small-only">pregunta </span>>></a>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="container" ng-controller="uquestCtrl as uq">
+  <div class="row">
+    <div class="col m10 offset-m1 s12">
+      <h1>Tu encuesta</h1>
+      Introduce el ID de la encuesta que quieres administrar
+      <div class="input-field">
+        <input id="encu" type="text" class="validate" ng-model="uq.encu"/>
+        <label for="encu">ID de encuesta</label>
+      </div>
+      <div class="input-field">
+        <input id="passencu" type="text" class="validate" ng-model="uq.pass"/>
+        <label for="passencu">Contrase&ntilde;a de la encuesta</label>
+      </div>
+    </div>    
+  </div>
+  <div class="row center">
+    <div class="col m10 offset-m1 s12">
+      <a class="waves-effect waves-light btn white grey-text text-darken-2" href="#/" ng-click="uq.borraTodo()"><< Volver</a>
+      <a class="waves-effect waves-light btn white grey-text text-darken-2" ng-click="uq.buscarEncuesta()">Administrar >></a>
+    </div>
+  </div>
+</div>

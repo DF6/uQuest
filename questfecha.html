@@ -1,0 +1,51 @@
+<div class="container animated fadeIn" ng-controller="uquestCtrl as uq">
+  <div class="row">
+    <div class="col m10 offset-m1 s12">
+      <h1>Quest de fecha y hora</h1>
+      <p>Esta quest te permite hacer una pregunta relacionada con la elecci&oacute;n de una fecha y una hora, como por ejemplo: ¿Qu&eacute; d&iacute;a podemos empezar el viaje de fin de curso?</p>
+      <div class="input-field">
+        <input id="pregunta" type="text" class="validate" ng-model="uq.pregunta"/>
+        <label for="pregunta">Pregunta</label>
+      </div>
+      <div class="input-field col s12">
+        <input type="text" id="fechaIni" ng-model="uq.fechaIni" onclick="$('#fechaIni').pickadate({
+           selectMonths: true,
+           monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+           monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+           weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+           weekdaysShort: ['Dom', 'Lun','Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+           today: 'Mañana',
+           clear: '',
+           close: 'Cerrar',
+           format: 'dd/mm/yyyy',
+           firstDay:1,
+           min: 1,
+           max:90
+         });">
+         <label for="fechaIni">Fecha de inicio para elegir</label>
+      </div>
+      <div class="input-field col s12">
+        <input type="text" id="fechaFin" ng-model="uq.fechaFin" onclick="$('#fechaFin').pickadate({
+           selectMonths: true,
+           monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+           monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+           weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+           weekdaysShort: ['Dom', 'Lun','Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+           today: 'Mañana',
+           clear: '',
+           close: 'Cerrar',
+           format: 'dd/mm/yyyy',
+           firstDay: 1,
+           min: [2016,0,30],
+           max: 90
+         });">
+        <label for="fechaFin">Fecha de fin para elegir</label>
+      </div>
+    </div>
+  </div>
+  <div class="row center">
+    <a class="waves-effect waves-light btn white grey-text text-darken-2" ng-show="uq.consultaSwitch()" href="#/admincreacion"><< Volver</a>
+    <a class="waves-effect waves-light btn white grey-text text-darken-2" ng-show="!uq.consultaSwitch()" href="#/crear"><< Cancelar<span class="hide-on-small-only"> pregunta</span></a>
+    <a class="waves-effect waves-light btn white grey-text text-darken-2" ng-click="uq.guardarFechaCena(3);uq.guardarPregunta('Fecha')">Guardar <span class="hide-on-small-only">pregunta </span>>></a>
+  </div>
+</div>

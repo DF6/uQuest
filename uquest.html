@@ -1,0 +1,80 @@
+<html>
+  <head>
+
+      <title>uQuest</title>
+      <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+      <meta charset="utf-8"/>
+      <link rel="icon" type="image/png" href="uQuest/favicon.png" sizes="32x32">
+      <link rel="stylesheet" href="materialize/css/materialize.min.css"/>
+      <link rel="stylesheet" href="custom.css"/>
+      <link rel="stylesheet" href="animate.css"/>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body ng-app="uquest" ng-controller="navuquest as nav"  class="grey lighten-4 grey-text text-darken-2">
+
+    <nav class="z-depth-1 fixed">
+      <div class="nav-wrapper blue">
+        <div class="container">
+          <ul class="left brand-logo">
+            <li><a href="#/"><img id="logoImg" src="uQuest/logo_questme_blanco.svg"></img></a></li>
+          </ul>
+          <!--
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="https://www.facebook.com/uQuestapp" target="_blank">Facebook</a></li>
+            <li><a href="https://twitter.com/uquestapp" target="_blank">Twitter</a></li>
+            <li><a href="https://plus.google.com/+UquestMe" target="_blank">Google +</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="https://www.facebook.com/uQuestapp">Facebook</a></li>
+            <li><a href="https://twitter.com/uquestapp">Twitter</a></li>
+            <li><a href="https://plus.google.com/+UquestMe">Google +</a></li>
+          </ul>
+        </div>-->
+      </div>
+    </nav>
+
+    <div ng-view></div>
+
+    <!--<footer class="page-footer" style="background-color:#3498db">
+       <div class="container">
+         <div class="row">
+           <div class="col l6 s12">
+             <h5 class="white-text">uQuest 0.6-beta</h5>
+             <p class="grey-text text-lighten-4" id="estu">Creado por estudiantes de UPV/EHU</p>
+             <p class="grey-text text-lighten-4" id="estu">Usando AngularJS y MaterializeCSS</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+             <h5 class="white-text">Enlaces de inter&eacute;s</h5>
+              <ul>
+                <li ng-class="{marcado: nav.estoy('/privacidad')}"><a class="grey-text text-lighten-3" href="index.html#/privacidad">Pol&iacute;tica de privacidad</a></li>
+                <li><a class="grey-text text-lighten-3" href="http://www.safecreative.org/work/1407031371502-uquest">Licencia de derechos de autor Safe Creative</a></li>
+                <li><a class="grey-text text-lighten-3" href="" onclick="Materialize.toast('Envíanos cualquier cosa a uquestapp@gmail.com', 10000, 'rounded')">Contacto</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <div class="container">
+          © 2014 uQuest
+        </div>
+      </div>
+    </footer>-->
+
+    <script src="angular.js"></script>
+    <script src="api-provider.js"></script>
+    <script src="api-parser.js"></script>
+    <script src="uquest.js"></script>
+    <script src="uquest-comun.js"></script>
+    <script src="uquest-votar.js"></script>
+    <script src="uquest-respuestas.js"></script>
+    <script src="angular-route.js"></script>
+    <script src="angular-resource.js"></script>
+    <script src="jquery-2.1.4.js"></script>
+    <script src="materialize/js/materialize.min.js"></script>
+    <script src="client.min.js"></script>
+
+  </body>
+</html>

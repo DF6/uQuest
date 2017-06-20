@@ -1,0 +1,39 @@
+<div  class="container animated fadeIn" ng-controller="uquestCtrl as uq">
+  <div class="row">
+    <div class="col m10 offset-m1 s12" style="margin-top:2%;">
+      <h1>Tu quest</h1>
+      Como una buena pizza, necesitamos buenos ingredientes. Selecciona las preguntas que quieras cocinar en tu Quest.<br/><br/>
+      <a class="waves-effect waves-light btn white grey-text text-darken-2" ng-click="uq.revisaPreguntas('Lista')">A&ntilde;adir pregunta de lista >></a><br/><br/>
+      <a class="waves-effect waves-light btn white grey-text text-darken-2" ng-click="uq.revisaPreguntas('Breve')">A&ntilde;adir pregunta de resp. breve >></a><br/><br/>
+      <!--<a class="waves-effect waves-light btn white grey-text text-darken-2" ng-click="uq.revisaPreguntas('Fecha')">A&ntilde;adir pregunta de fecha >></a><br/><br/>-->
+      <!--<a class="waves-effect waves-light btn white grey-text text-darken-2" ng-click="uq.revisaPreguntas('Foto')">A&ntilde;adir pregunta de foto >></a>-->
+    </div>
+  </div>
+  <div class="row" ng-repeat="pre in uq.preguntas">
+    <div class="col m10 offset-m1 s12">
+      <div class="card" style="background-color:#3498db">
+        <div class="card-content white-text">
+          <!--Los cambios que hice aquí fueron para que no haya problemas con el código anterior. Por ejemplo en vez de uq.preguntas.[$index][1] cambia a pre.tipoPregunta-->
+          <span class="card-title">PREGUNTA {{$index+1}}</span>
+          <br/><span>{{pre.pregunta}}</span><br/>
+          <span ng-if="pre.tipoPregunta=='Lista'">Opciones</span><br/>
+          <span ng-repeat="opc in pre.opciones" style="font-size:100%;"><br/>{{opc}}<br/></span>
+          <span ng-if="pre.tipoPregunta=='Fecha'">A partir de {{pre.fecha}}</span>
+          <span ng-if="pre.tipoPregunta=='Foto'"><img ng-src="{{pre.foto}}"/></span>
+        </div>
+        <div class="card-action">
+          <a>#{{pre.tipoPregunta}}</a>
+          <a>#UQUEST</a>
+          <a style="text-align:right;" class="waves-effect waves-light btn white grey-text text-darken-2" ng-click="uq.borrarPregunta($index)">X</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col m10 offset-m1 s12">
+      <hr/>
+      <a class="waves-effect waves-light btn white grey-text text-darken-2" ng-click="uq.validarPreguntas()">No hay m&aacute;s preguntas, se&ntilde;or&iacute;a >></a><br/><br/>
+      <a class="waves-effect waves-light btn white grey-text text-darken-2" href="#/admincreacion"><< Volver <span class="hide-on-small-only">al inicio</span></a>
+    </div>
+  </div>
+</div>

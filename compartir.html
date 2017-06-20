@@ -1,0 +1,29 @@
+<div class="container animated fadeIn" ng-controller="uquestCtrl as uq">
+  <div class="row">
+    <div class="col m10 offset-m1 s12">
+      <h1>Quest terminada</h1>
+      Aqu&iacute; tienes tu link para compartirla.<br/><br/>
+      <div class="row">
+        <div class="col s6">
+          <input type="text" readonly value="/uquest.html#/votar/{{ uq.encu }}"/>
+        </div>
+        <div class="col s6">
+          <a class="waves-effect waves-light btn-large white grey-text text-darken-2" href="/uquest.html#/votar/{{ uq.encu }}">Ir</a>
+        </div>
+      </div>
+      <script>
+        if(navigator.userAgent.match('Android')){
+          document.write('Copia y pega esto en tu app favorita<p><textarea name=\'share\' class=\'span6 input-large search-query\'>Acabo de crear una nueva encuesta en uQuest - http://uqt.me/?id=7kmG3D84kv \</textarea></p>');
+        }
+      </script>
+      <script>
+        if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))){
+          document.write('<p><a class=\'waves-effect waves-light btn\' href=\'whatsapp://send?text=Acabo%20de%20crear%20una%20nueva%20encuesta%20en%20uQuest%20-%20%20http://uqt.me/votar/{{ uq.encu }}\' role=\'button\'>Compartir en Whatsapp &raquo;</a></p>');
+        }
+      </script>
+      <p><a class='waves-effect waves-light btn white grey-text text-darken-2' href='https://twitter.com/intent/tweet?url=http://uqt.me/votar/{{ uq.encu }}' role='button'>Compartir en Twitter &raquo;</a></p>
+      <p><a class='waves-effect waves-light btn white grey-text text-darken-2' href='https://facebook.com/sharer/sharer.php?u=http://uqt.me/votar/{{ uq.encu }}' role='button'>Compartir en Facebook &raquo;</a></p>
+      <p><a class='waves-effect waves-light btn white grey-text text-darken-2'  href='https://plus.google.com/share?url=http://uqt.me/votar/{{ uq.encu }}' role='button'>Compartir en Google+ &raquo;</a></p>
+    </div>
+  </div>
+</div>

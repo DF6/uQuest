@@ -1,0 +1,134 @@
+body{
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+}
+
+#imagenportada{
+  width: 70%;
+  margin-bottom: -20px;
+}
+
+#logoImg{
+  height: 100%;
+}
+
+#portada{
+  padding-top: 10%;
+}
+
+.jumbotron{
+  margin-top: 10%;
+  margin-bottom: 10%; 
+}
+
+.justify-align{
+  text-align: justify;
+}
+
+h1{
+  font-size: 3rem;
+}
+
+h2{
+  font-size: 2.7rem;
+}
+
+h2{
+  font-size: 2.4rem;
+}
+
+h3{
+  font-size: 2rem;
+}
+
+h4{
+  font-size: 1.8rem;
+}
+
+h5{
+  font-size: 1.5rem;
+}
+
+h6{
+  font-size: 1.2rem;
+}
+
+hr{
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    border-style: solid;
+    margin: 1em 0;
+}
+
+i{
+  margin:2%;
+}
+
+/*Clase para los iconos sin margen*/
+i.nomargin{
+  margin: 0px;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Lato',sans-serif;
+  font-weight: 300;
+}
+
+.btn.waves-effect, .btn-large.waves-effect{
+  border-radius: 5pt;
+}
+
+p{
+  font-weight: 400;
+  color: #616161;
+}
+
+.jumbotron h1{
+  font-size: 4rem;
+}
+
+/*Dispositivos moviles*/
+@media (max-width: 600px) {
+  .jumbotron h1{
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 992px) {
+  .jumbotron h1{
+    font-size: 3rem;
+  }
+}
+
+.card.small{
+  height: 220px;
+}
+
+.card.small .card-content{
+  height: 50px;
+  padding: 7px;
+  margin: 0px;
+}
+
+.card.small .card-image{
+  height: 170px;
+}
+
+nav ul.brand-logo li:hover, nav ul.brand-logo li.active{
+  background-color: transparent;
+}
+
+.collection.{
+  border-color: transparent;
+}
+
+.collection-item.transparent{
+  border-color: transparent;
+}
+
+label.preguntaLista {
+  margin-left: 0.75rem;
+}

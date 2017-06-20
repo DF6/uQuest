@@ -1,0 +1,15 @@
+<div class="container animated fadeIn" ng-controller="uquestCtrl as uq">	
+	<div class="row">
+	  <div class="col m10 offset-m1 s12">
+	    <h1>Opci&oacute;n {{uq.opci().length+1}}</h1>
+	    <div class="input-field">
+	      <input id="pregunta" type="text" class="validate" ng-model="uq.opcion">
+	      <label for="pregunta">Opci&oacute;n</label>
+	    </div>    
+	  </div>
+	</div>	
+	<div class="row center">		
+	    <a class="waves-effect waves-light btn white grey-text text-darken-2" href="#/nuevalista"><< Cancelar<span class="hide-on-small-only"> opci&oacute;n</span></a>
+	    <a class="waves-effect waves-light btn white grey-text text-darken-2" ng-click="uq.guardarOpcion()">Guardar <span class="hide-on-small-only">opci&oacute;n </span>>></a>	    
+	</div>
+</div>

@@ -1,0 +1,38 @@
+<div ng-controller="uquestCtrl as uq">
+  <div class="row">
+    <div class="col s6 offset-s3">
+      <h1>Editar Pregunta</h1>
+      <div class="input-field">
+        <input id="pregunta" type="text" class="validate" ng-model="uq.pregunta"/>
+        <label for="pregunta">Pregunta</label>
+      </div>
+      Tipo: {{uq.preguntas[uq.preguntaEditar].tipoPregunta}}<br/><br/>
+      <div ng-repeat="opc in uq.preguntas[uq.preguntaEditar].opciones" ng-if="uq.preguntas[uq.preguntaEditar].tipoPregunta=='Lista'">
+        {{opc.opcion}}&nbsp&nbsp<a class="waves-light waves-effect btn white pregunta" ng-click="uq.preguntas[uq.preguntaEditar].opciones.splice($index,1)">X</a><br/><br/>
+      </div>
+      <div class="input-field" ng-if="uq.preguntas[uq.preguntaEditar].tipoPregunta=='Fecha'">
+        <input type="text" id="d3" class="datepicker" ng-model="uq.fechaTemp" ng-click="uq.fechaTemp=document.getElementById('d3').value" onclick="$('.datepicker').pickadate({
+           selectMonths: true,
+           monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+           monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+           weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+           weekdaysShort: ['Dom', 'Lun','Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+           today: 'Mañana',
+           clear: '',
+           close: 'Cerrar',
+           format: 'dd/mm/yyyy',
+           firstDay:1,
+           min: 1,
+           max:90
+         });">
+         <label for="d3">Fecha de inicio para elegir</label>
+         <br/><br/>
+       </div>
+       <div ng-if="uq.preguntas[uq.preguntaEditar].tipoPregunta=='Foto'">
+         Cambiar Foto <input id="fot" ng-model="uq.foto" class="white pregunta" onChange="document.getElementsByTagName('img')[0].src=document.getElementById('fot').value" type="file" accept="image/jpeg,image/png"/><br/><br/>
+         <img src="{{uq.foto}}"/><br/><br/>
+       </div>
+       <a class="waves-effect waves-light btn white pregunta" ng-click="uq.cambiosEdicion(uq.preguntaEditar)">Guardar cambios >></a>
+    </div>
+  </div>
+</div>
